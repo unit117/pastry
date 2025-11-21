@@ -12,14 +12,15 @@ final class DataStore {
 
     static var defaultDirectory: URL {
 #if os(macOS)
-        return FileManager.default
-            .homeDirectoryForCurrentUser
-            .appendingPathComponent("Library/Application Support/PastryArchitect", isDirectory: true)
+        if let supportDir = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first {
+            return supportDir.appendingPathComponent("PastryArchitect", isDirectory: true)
+        }
+        return FileManager.default.temporaryDirectory.appendingPathComponent("PastryArchitect", isDirectory: true)
 #elseif os(iOS)
-        return FileManager.default
-            .urls(for: .documentDirectory, in: .userDomainMask)
-            .first!
-            .appendingPathComponent("PastryArchitect", isDirectory: true)
+        if let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            return documents.appendingPathComponent("PastryArchitect", isDirectory: true)
+        }
+        return FileManager.default.temporaryDirectory.appendingPathComponent("PastryArchitect", isDirectory: true)
 #else
         return FileManager.default
             .temporaryDirectory

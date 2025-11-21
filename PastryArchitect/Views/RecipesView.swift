@@ -1,7 +1,7 @@
-#if canImport(SwiftUI)
+#if canImport(SwiftUI) && os(macOS)
 import SwiftUI
 
-@available(macOS 13.0, iOS 13.0, *)
+@available(macOS 13.0, *)
 struct RecipesView: View {
     let recipes: [Recipe]
     @State private var selection: Recipe?
@@ -22,7 +22,7 @@ struct RecipesView: View {
     }
 }
 
-@available(macOS 13.0, iOS 13.0, *)
+@available(macOS 13.0, *)
 struct RecipeDetailView: View {
     let recipe: Recipe
     var body: some View {
