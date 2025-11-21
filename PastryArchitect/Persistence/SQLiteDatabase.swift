@@ -2,6 +2,8 @@ import Foundation
 #if canImport(SQLite3)
 import SQLite3
 
+private let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
+
 final class SQLiteDatabase {
     private var db: OpaquePointer?
     private let path: String

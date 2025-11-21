@@ -16,11 +16,6 @@ final class DataStore {
             return supportDir.appendingPathComponent("PastryArchitect", isDirectory: true)
         }
         return FileManager.default.temporaryDirectory.appendingPathComponent("PastryArchitect", isDirectory: true)
-#elseif os(iOS)
-        if let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-            return documents.appendingPathComponent("PastryArchitect", isDirectory: true)
-        }
-        return FileManager.default.temporaryDirectory.appendingPathComponent("PastryArchitect", isDirectory: true)
 #else
         return FileManager.default
             .temporaryDirectory

@@ -4,8 +4,7 @@ import PackageDescription
 let package = Package(
     name: "PastryArchitect",
     platforms: [
-        .macOS(.v13),
-        .iOS(.v16)
+        .macOS(.v13)
     ],
     products: [
         .executable(name: "PastryArchitect", targets: ["PastryArchitect"])
