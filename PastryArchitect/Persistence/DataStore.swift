@@ -1,4 +1,5 @@
 import Foundation
+#if canImport(SQLite3)
 
 final class DataStore {
     private let database: SQLiteDatabase
@@ -124,3 +125,5 @@ final class DataStore {
         return items
     }
 }
+
+#endif

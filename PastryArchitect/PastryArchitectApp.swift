@@ -1,3 +1,5 @@
+import Foundation
+#if canImport(SwiftUI)
 import SwiftUI
 
 @main
@@ -25,3 +27,11 @@ struct PastryArchitectApp: App {
         }
     }
 }
+#else
+@main
+struct PastryArchitectCLI {
+    static func main() {
+        print("PastryArchitect requires macOS for the full SwiftUI experience. Running in placeholder mode.")
+    }
+}
+#endif

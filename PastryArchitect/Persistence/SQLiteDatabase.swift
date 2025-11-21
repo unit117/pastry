@@ -1,4 +1,5 @@
 import Foundation
+#if canImport(SQLite3)
 import SQLite3
 
 final class SQLiteDatabase {
@@ -116,6 +117,7 @@ final class SQLiteDatabase {
         }
     }
 }
+#endif
 
 enum DatabaseError: Error, LocalizedError {
     case connectionFailed(String)

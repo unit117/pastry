@@ -30,6 +30,7 @@ final class ParsingTests: XCTestCase {
         XCTAssertEqual(payload.products.first?.components.first?.referenceID, "cream")
     }
 
+#if canImport(SQLite3)
     func testDatabaseInsertions() throws {
         let tempDB = NSTemporaryDirectory().appending("test_inventory.db")
         let store = try DataStore(databasePath: tempDB)
@@ -46,4 +47,5 @@ final class ParsingTests: XCTestCase {
         XCTAssertEqual(recipes.first?.ingredients.first?.catalogueID, "sugar")
         XCTAssertEqual(products.first?.components.first?.referenceID, "syrup")
     }
+#endif
 }

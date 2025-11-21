@@ -1,4 +1,5 @@
 import Foundation
+#if canImport(SwiftUI)
 import Combine
 import SwiftUI
 import CoreGraphics
@@ -149,3 +150,4 @@ final class AppViewModel: ObservableObject {
         }
     }
 }
+#endif

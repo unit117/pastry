@@ -1,3 +1,4 @@
+#if canImport(SwiftUI)
 import SwiftUI
 
 struct ImportDropView: View {
@@ -92,3 +93,4 @@ private extension [NSItemProvider] {
         }
     }
 }
+#endif

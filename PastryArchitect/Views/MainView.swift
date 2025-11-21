@@ -1,3 +1,4 @@
+#if canImport(SwiftUI)
 import SwiftUI
 
 struct MainView: View {
@@ -90,3 +91,4 @@ enum SidebarItem: CaseIterable {
         }
     }
 }
+#endif

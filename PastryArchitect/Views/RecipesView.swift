@@ -1,3 +1,4 @@
+#if canImport(SwiftUI)
 import SwiftUI
 
 struct RecipesView: View {
@@ -58,3 +59,4 @@ struct RecipeDetailView: View {
         }
     }
 }
+#endif

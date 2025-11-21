@@ -7,6 +7,16 @@ public struct LocalizedText: Codable, Equatable {
         self.values = values
     }
 
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        self.values = try container.decode([String: String].self)
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(values)
+    }
+
     public func value(for locale: String = Locale.current.language.languageCode?.identifier ?? "en") -> String {
         if let direct = values[locale] { return direct }
         if let english = values["en"] { return english }

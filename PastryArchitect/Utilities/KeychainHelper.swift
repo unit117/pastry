@@ -1,4 +1,5 @@
 import Foundation
+#if canImport(Security)
 import Security
 
 final class KeychainHelper {
@@ -37,3 +38,4 @@ final class KeychainHelper {
         return value
     }
 }
+#endif
