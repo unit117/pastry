@@ -10,9 +10,25 @@ final class DataStore {
         database = try SQLiteDatabase(path: databasePath)
     }
 
+    static var defaultDirectory: URL {
+#if os(macOS)
+        return FileManager.default
+            .homeDirectoryForCurrentUser
+            .appendingPathComponent("Library/Application Support/PastryArchitect", isDirectory: true)
+#elseif os(iOS)
+        return FileManager.default
+            .urls(for: .documentDirectory, in: .userDomainMask)
+            .first!
+            .appendingPathComponent("PastryArchitect", isDirectory: true)
+#else
+        return FileManager.default
+            .temporaryDirectory
+            .appendingPathComponent("PastryArchitect", isDirectory: true)
+#endif
+    }
+
     static var defaultPath: String {
-        let base = (FileManager.default.homeDirectoryForCurrentUser as NSURL).appendingPathComponent("Library/Application Support/PastryArchitect/inventory.db")!
-        return base.path
+        defaultDirectory.appendingPathComponent("pastry.sqlite").path
     }
 
     func save(payload: ParsedPayload) throws {
