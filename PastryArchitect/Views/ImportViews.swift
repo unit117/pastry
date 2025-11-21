@@ -1,6 +1,7 @@
-#if canImport(SwiftUI)
+#if canImport(SwiftUI) && os(macOS)
 import SwiftUI
 
+@available(macOS 13.0, *)
 struct ImportDropView: View {
     var onDrop: ([URL]) -> Void
 
@@ -24,6 +25,7 @@ struct ImportDropView: View {
     }
 }
 
+@available(macOS 13.0, *)
 struct ImportQueueView: View {
     @Binding var jobs: [ImportJob]
 

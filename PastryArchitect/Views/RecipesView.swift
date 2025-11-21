@@ -1,6 +1,7 @@
-#if canImport(SwiftUI)
+#if canImport(SwiftUI) && os(macOS)
 import SwiftUI
 
+@available(macOS 13.0, *)
 struct RecipesView: View {
     let recipes: [Recipe]
     @State private var selection: Recipe?

@@ -1,9 +1,11 @@
 import Foundation
-#if canImport(SwiftUI)
+#if canImport(SwiftUI) && os(macOS)
 import Combine
 import SwiftUI
 import CoreGraphics
+import AppKit
 
+@available(macOS 13.0, *)
 @MainActor
 final class AppViewModel: ObservableObject {
     @Published var importJobs: [ImportJob] = []

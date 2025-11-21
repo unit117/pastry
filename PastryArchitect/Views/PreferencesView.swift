@@ -1,6 +1,7 @@
-#if canImport(SwiftUI)
+#if canImport(SwiftUI) && os(macOS)
 import SwiftUI
 
+@available(macOS 13.0, *)
 struct PreferencesView: View {
     @State private var apiKey: String = (try? KeychainHelper.shared.apiKey()) ?? ""
     @State private var databasePath: String = DataStore.defaultPath

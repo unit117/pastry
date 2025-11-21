@@ -1,7 +1,8 @@
 import Foundation
-#if canImport(SwiftUI)
+#if canImport(SwiftUI) && os(macOS)
 import SwiftUI
 
+@available(macOS 13.0, *)
 @main
 struct PastryArchitectApp: App {
     @StateObject private var viewModel = AppViewModel()

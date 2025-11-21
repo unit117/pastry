@@ -1,6 +1,7 @@
-#if canImport(SwiftUI)
+#if canImport(SwiftUI) && os(macOS)
 import SwiftUI
 
+@available(macOS 13.0, *)
 struct MainView: View {
     @StateObject var viewModel: AppViewModel
     @State private var selection: SidebarItem = .imports

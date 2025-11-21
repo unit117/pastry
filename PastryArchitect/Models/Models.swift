@@ -17,8 +17,21 @@ public struct LocalizedText: Codable, Equatable {
         try container.encode(values)
     }
 
-    public func value(for locale: String = Locale.current.language.languageCode?.identifier ?? "en") -> String {
-        if let direct = values[locale] { return direct }
+    private func preferredLanguageCode() -> String {
+        if #available(macOS 13.0, iOS 16.0, *) {
+            if let identifier = Locale.current.language.languageCode?.identifier {
+                return identifier
+            }
+        }
+        if let legacyCode = Locale.current.languageCode {
+            return legacyCode
+        }
+        return "en"
+    }
+
+    public func value(for locale: String? = nil) -> String {
+        let code = locale ?? preferredLanguageCode()
+        if let direct = values[code] { return direct }
         if let english = values["en"] { return english }
         return values.values.first ?? ""
     }
